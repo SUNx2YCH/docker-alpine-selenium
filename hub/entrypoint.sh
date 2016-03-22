@@ -9,7 +9,7 @@ teardown()
 	exit 0
 }
 
-java -jar selenium-server-standalone-2.48.2.jar -role hub \
+java -jar selenium-server-standalone-2.53.0.jar -role hub \
                                                 -port $HUB_PORT &
 JAVA_PID=$!
 wait $JAVA_PID

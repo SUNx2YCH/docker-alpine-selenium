@@ -1,4 +1,4 @@
-FROM sunx2ych/alpine-selenium-base:2.48.2
+FROM sunx2ych/alpine-selenium-base:2.53.0
 MAINTAINER Alexander Ivanovsky <sunx2ych@gmail.com>
 
 ENV HUB_PORT 4444

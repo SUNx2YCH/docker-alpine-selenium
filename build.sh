@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SELENIUM_VERSION=2.48.2
+SELENIUM_VERSION=2.53.0
 
 docker build -t sunx2ych/alpine-selenium-base:$SELENIUM_VERSION base
 docker build -t sunx2ych/alpine-selenium-hub:$SELENIUM_VERSION hub

@@ -15,8 +15,8 @@ teardown()
 export DISPLAY=":0.0"
 Xvfb :0 -screen 0 1280x800x24 -ac +extension GLX +render -noreset > /dev/null 2>&1 &
 
-java -jar selenium-server-standalone-2.48.2.jar -role node \
+java -jar selenium-server-standalone-2.53.0.jar -role node \
                                                 -hub http://$HUB_HOST:$HUB_PORT/grid/register \
-                                                -browser browserName=firefox,version=38.3,maxInstances=1,platform=LINUX &
+                                                -browser browserName=firefox,version=38,maxInstances=1,platform=LINUX &
 JAVA_PID=$!
 wait $JAVA_PID
