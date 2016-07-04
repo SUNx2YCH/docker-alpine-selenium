@@ -17,6 +17,6 @@ Xvfb :0 -screen 0 1280x800x24 -ac +extension GLX +render -noreset > /dev/null 2>
 
 java -jar selenium-server-standalone-2.53.0.jar -role node \
                                                 -hub http://$HUB_HOST:$HUB_PORT/grid/register \
-                                                -browser browserName=firefox,version=38,maxInstances=1,platform=LINUX &
+                                                -browser browserName=firefox,version=45,maxInstances=1,platform=LINUX &
 JAVA_PID=$!
 wait $JAVA_PID

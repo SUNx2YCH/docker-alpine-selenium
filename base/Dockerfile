@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Alexander Ivanovsky <sunx2ych@gmail.com>
 
 ENV SELENIUM_DIR /selenium

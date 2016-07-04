@@ -4,7 +4,7 @@ MAINTAINER Alexander Ivanovsky <sunx2ych@gmail.com>
 ENV HUB_HOST hub
 ENV HUB_PORT 4444
 
-RUN apk add --no-cache firefox \
+RUN apk add --no-cache firefox-esr \
                        ttf-freefont \
                        dbus \
                        xvfb
