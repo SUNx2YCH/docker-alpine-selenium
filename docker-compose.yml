@@ -26,3 +26,10 @@ services:
     image: sunx2ych/alpine-selenium-node-firefox-esr:${IMAGE_TAG}
     links:
       - hub
+
+  tests:
+    build:
+      context: ./tests
+    image: sunx2ych/alpine-selenium-tests:${IMAGE_TAG}
+    links:
+      - node-firefox-esr

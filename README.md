@@ -18,6 +18,13 @@ sunx2ych/alpine-selenium-node-firefox-esr    2.53.0    308.1 MB
 $ docker-compose build --force-rm --no-cache
 ```
 
+### How to run tests
+
+```
+$ docker-compose up --force-recreate tests
+$ docker-compose down
+```
+
 ### To-Do List
 
 - [x] alpine:3.4
