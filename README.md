@@ -4,11 +4,18 @@ Small Docker images for Selenium Grid
 
 ```
 $ docker images
-REPOSITORY                               TAG       SIZE
-alpine                                   3.4       4.799 MB
-sunx2ych/alpine-selenium-base            2.53.0    123.3 MB
-sunx2ych/alpine-selenium-hub             2.53.0    123.3 MB
-sunx2ych/alpine-selenium-node-firefox    2.53.0    307.9 MB
+REPOSITORY                                   TAG       SIZE
+alpine                                       3.4       4.799 MB
+sunx2ych/alpine-selenium-base                2.53.0    123.3 MB
+sunx2ych/alpine-selenium-hub                 2.53.0    123.3 MB
+sunx2ych/alpine-selenium-node-base           2.53.0    153.6 MB
+sunx2ych/alpine-selenium-node-firefox-esr    2.53.0    308.1 MB
+```
+
+### How to build
+
+```
+$ docker-compose build --force-rm --no-cache
 ```
 
 ### To-Do List

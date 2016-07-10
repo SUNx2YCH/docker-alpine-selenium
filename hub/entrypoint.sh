@@ -1,15 +1,10 @@
 #!/bin/sh
 
-trap teardown SIGINT SIGTERM
+source stop_trap.sh
 
-teardown()
-{
-	kill -s SIGTERM $JAVA_PID
-	wait $JAVA_PID
-	exit 0
-}
-
-java -jar selenium-server-standalone-2.53.0.jar -role hub \
-                                                -port $HUB_PORT &
+java -jar $SELENIUM_JAR \
+	-role hub \
+	-port $SELENIUM_HUB_PORT \
+	&
 JAVA_PID=$!
 wait $JAVA_PID

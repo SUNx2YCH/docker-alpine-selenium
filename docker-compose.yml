@@ -1,12 +1,28 @@
 version: '2'
 services:
 
+  base:
+    build:
+      context: ./base
+      args:
+        SELENIUM_JAR_URL: ${SELENIUM_JAR_URL}
+    image: sunx2ych/alpine-selenium-base:${IMAGE_TAG}
+
   hub:
-    image: sunx2ych/alpine-selenium-hub:2.53.0
+    build:
+      context: ./hub
+    image: sunx2ych/alpine-selenium-hub:${IMAGE_TAG}
     ports:
       - "4444:4444"
 
-  firefox:
-    image: sunx2ych/alpine-selenium-node-firefox:2.53.0
+  node-base:
+    build:
+      context: ./node-base
+    image: sunx2ych/alpine-selenium-node-base:${IMAGE_TAG}
+
+  node-firefox-esr:
+    build:
+      context: ./node-firefox-esr
+    image: sunx2ych/alpine-selenium-node-firefox-esr:${IMAGE_TAG}
     links:
       - hub
