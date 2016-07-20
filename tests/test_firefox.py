@@ -1,4 +1,12 @@
-def test_node_firefox_esr(firefox):
+import pytest
+
+
+@pytest.fixture(params=['node_firefox', 'standalone_firefox'])
+def firefox(request):
+    return request.getfuncargvalue(request.param)
+
+
+def test_firefox(firefox):
     """
     :type firefox: selenium.webdriver.Remote
     """

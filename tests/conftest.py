@@ -1,3 +1,4 @@
+import os
 import time
 from urllib2 import URLError
 
@@ -6,26 +7,33 @@ from selenium.common.exceptions import WebDriverException
 from selenium.webdriver import Remote
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-SELENIUM_HUB_URL = 'http://hub:4444/wd/hub'
-CONNECTION_TIMEOUT = 30
+
+DEFAULT_CONNECTION_TIMEOUT = 30
+SELENIUM_GRID_URL = os.getenv('SELENIUM_GRID_URL', 'http://127.0.0.1:4444/wd/hub')
+STANDALONE_FIREFOX_URL = os.getenv('STANDALONE_FIREFOX_URL', 'http://127.0.0.1:4445/wd/hub')
 
 
-@pytest.yield_fixture
-def firefox():
-    driver = None
-
-    deadline = time.time() + CONNECTION_TIMEOUT
+def delayed_remote_driver(command_executor, desired_capabilities, timeout=DEFAULT_CONNECTION_TIMEOUT):
+    deadline = time.time() + timeout
     while time.time() < deadline:
         try:
-            driver = Remote(command_executor=SELENIUM_HUB_URL,
-                            desired_capabilities=DesiredCapabilities.FIREFOX)
-            break
+            return Remote(command_executor=command_executor,
+                          desired_capabilities=desired_capabilities)
         except (URLError, WebDriverException) as e:
             pass
         time.sleep(1)
+    raise RuntimeError('Failed to connect to {0}'.format(command_executor))
 
-    if not driver:
-        raise RuntimeError('Failed to connect to {0}'.format(SELENIUM_HUB_URL))
 
+@pytest.yield_fixture
+def node_firefox():
+    driver = delayed_remote_driver(SELENIUM_GRID_URL, DesiredCapabilities.FIREFOX)
+    yield driver
+    driver.quit()
+
+
+@pytest.yield_fixture
+def standalone_firefox():
+    driver = delayed_remote_driver(STANDALONE_FIREFOX_URL, DesiredCapabilities.FIREFOX)
     yield driver
     driver.quit()

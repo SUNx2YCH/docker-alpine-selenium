@@ -12,6 +12,7 @@ services:
     build:
       context: ./hub
     image: sunx2ych/alpine-selenium-hub:${IMAGE_TAG}
+    # for local debug only
     ports:
       - "4444:4444"
 
@@ -27,9 +28,21 @@ services:
     links:
       - hub
 
+  standalone-firefox-esr:
+    build:
+      context: ./standalone-firefox-esr
+    image: sunx2ych/alpine-selenium-standalone-firefox-esr:${IMAGE_TAG}
+    # for local debug only
+    ports:
+      - "4445:4444"
+
   tests:
     build:
       context: ./tests
     image: sunx2ych/alpine-selenium-tests:${IMAGE_TAG}
+    environment:
+      SELENIUM_GRID_URL: http://hub:4444/wd/hub
+      STANDALONE_FIREFOX_URL: http://standalone-firefox-esr:4444/wd/hub
     links:
       - node-firefox-esr
+      - standalone-firefox-esr
