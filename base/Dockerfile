@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:edge
 MAINTAINER Alexander Ivanovsky <sunx2ych@gmail.com>
 
 ARG SELENIUM_JAR_URL

@@ -5,12 +5,12 @@ Small Docker images for Selenium Grid
 ```
 $ docker images
 REPOSITORY                                         TAG       SIZE
-alpine                                             3.4       4.799 MB
-sunx2ych/alpine-selenium-base                      2.53.1    123.3 MB
-sunx2ych/alpine-selenium-hub                       2.53.1    123.3 MB
-sunx2ych/alpine-selenium-node-base                 2.53.1    153.6 MB
-sunx2ych/alpine-selenium-node-firefox-esr          2.53.1    308.1 MB
-sunx2ych/alpine-selenium-standalone-firefox-esr    2.53.1    308.1 MB
+alpine                                             edge        4.0 MB
+sunx2ych/alpine-selenium-base                      2.53.1     95.7 MB
+sunx2ych/alpine-selenium-hub                       2.53.1     95.7 MB
+sunx2ych/alpine-selenium-node-base                 2.53.1    125.9 MB
+sunx2ych/alpine-selenium-node-firefox-esr          2.53.1    300.2 MB
+sunx2ych/alpine-selenium-standalone-firefox-esr    2.53.1    300.2 MB
 ```
 
 ### How to build
@@ -28,10 +28,9 @@ $ docker-compose down
 
 ### To-Do List
 
-- [x] alpine:3.4
-- [ ] node-chromium
-- [x] standalone-firefox
-- [ ] standalone-chromium
+- [ ] selenium v3
+- [ ] headless chromium
+- [ ] healthcheck
 - [ ] publish to Docker Hub
+- [ ] [dobi](https://dnephin.github.io/dobi/) (?)
 - [ ] supervisord (?)
-- [ ] phantomjs (?)
